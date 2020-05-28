@@ -34,3 +34,10 @@ class Translations:
             }
         )
         return results['Items'][0] if len(results['Items']) else {}
+
+    def delete_translation(self, english):
+        self.table.delete_item(
+            Key={
+               'english': english
+            }
+        )

@@ -12,4 +12,6 @@ def get(request, response):
     required_query_string_parameters=['word']
 )
 def delete(request, response):
-    response.body = {'status': request.query_string_parameters}
+    translation = Translation(english=request.query_string_parameters['word'])
+    translation.remove('english-spanish')
+    response.body = {'status': 'deleted'}
