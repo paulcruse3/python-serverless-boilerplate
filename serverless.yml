@@ -44,7 +44,7 @@ custom:
                 sources:
                     -
                         table: ${self:provider.stackTags.name}-translations
-                        sources: [./test/seed/translations.json]
+                        sources: [./tests/seed/translations.json]
 provider:
     name: aws
     runtime: python3.7
