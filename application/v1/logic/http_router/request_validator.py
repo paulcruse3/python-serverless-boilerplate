@@ -6,8 +6,8 @@ import yaml
 
 class RequestValidator:
 
-    def __init__(self, EventClient, ResponseClient):
-        self.EventClient = EventClient
+    def __init__(self, RequestClient, ResponseClient):
+        self.RequestClient = RequestClient
         self.ResponseClient = ResponseClient
         self._required_pairings = {
             'required_headers': 'headers',
@@ -17,7 +17,7 @@ class RequestValidator:
         }
 
     def validate_request(self, **kwargs):
-        event = self.EventClient.request
+        event = self.RequestClient.request
         for required_kwarg, event_loc in self._required_pairings.items():
             if kwargs.get(required_kwarg) and event_loc == 'body':
                 self._required_body(kwargs[required_kwarg], event.get(event_loc))

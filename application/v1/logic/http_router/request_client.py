@@ -1,7 +1,7 @@
 from application.v1.logic.common import json_helper
 
 
-class EventClient:
+class RequestClient:
 
     def __init__(self, event):
         self._event = event

@@ -52,7 +52,6 @@ provider:
     versionFunctions: false
     endpointType: regional
     environment:  ${file(./aws/envs/${opt:aws/envs, 'local'}.yml):environment}
-    profile: ${opt:stage, 'local'}
     stage: ${opt:stage, 'local'}
     region: ${opt:region, 'us-east-2'}
     stackName: ${self:provider.stackTags.name}
