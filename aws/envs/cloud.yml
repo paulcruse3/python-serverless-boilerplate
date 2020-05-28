@@ -1,0 +1,5 @@
+environment:
+    BASE_PATH: ${self:app}-${self:service}
+    STACK: ${self:provider.stackTags.name}
+    STAGE: ${self:provider.stage}
+    DYNAMODB_TRANSLATIONS: ${self:provider.stackTags.name}-translations
