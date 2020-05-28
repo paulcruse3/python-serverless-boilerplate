@@ -8,6 +8,10 @@ class Translation:
         self._english_word = kwargs.get('english')
         self._translations = Translations()
 
+    def create(self):
+        result = self._translations.create_translation(english=self._english_word, spanish=self._spanish_word);
+        return result
+
     def remove(self, direction):
         return self._delete_spanish() if direction == 'spanish-english' else self._delete_english()
 

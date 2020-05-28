@@ -12,9 +12,9 @@ class Translations:
     def _get_dynamo_table(self, table, endpoint=None):
         return boto3.resource('dynamodb', endpoint_url=endpoint).Table(table)
 
-    def create(self, translation):
-        self.table.put_item(Item=translation);
-        return translation
+    def create_translation(self, **kwargs):
+        self.table.put_item(Item=kwargs);
+        return kwargs
 
     def translate_english(self, english):
         result = self.table.get_item(

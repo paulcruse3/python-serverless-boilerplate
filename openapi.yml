@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+    title: translation API
+    version: 1.0.0
+    description: a translation api
+    contact:
+        name: Paul Cruse
+        email: paulcruse3@gmail.com
+tags:
+    -
+        name: translation
+        description: just a translation API
+paths:
+    /v1/spanish:
+        post:
+            tags:
+                - translation
+            operationId: PostSpanishTranslation
+            deprecated: false
+            summary: Create an translation
+            requestBody:
+                required: true
+                description: translation data
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1-post-translation-request'
+            responses:
+                201:
+                    description: Greeting successfully posted
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-translation-response'
+                400:
+                    description: Malformed request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-400-error-response'
+        get:
+            tags:
+                - translation
+            operationId: GetSpanishTranslation
+            deprecated: false
+            parameters:
+                -
+                    in: query
+                    name: palabra
+                    description: La palabra para traducir
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: translation retrieved
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-translation-response'
+                400:
+                    description: Malformed request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-400-error-response'
+    /v1/english:
+        post:
+            tags:
+                - translation
+            operationId: PostEnglishTranslation
+            deprecated: false
+            summary: Create an translation
+            requestBody:
+                required: true
+                description: translation data
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1-post-translation-request'
+            responses:
+                201:
+                    description: Greeting successfully posted
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-translation-response'
+                400:
+                    description: Malformed request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-400-error-response'
+        get:
+            tags:
+                - translation
+            operationId: GetEnglishTranslation
+            deprecated: false
+            description: body of the request
+            parameters:
+                -
+                    in: query
+                    name: word
+                    description: The num
+                    schema:
+                        type: string
+
+            responses:
+                200:
+                    description: translation retrieved
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-translation-response'
+                400:
+                    description: Malformed request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1-400-error-response'
+components:
+    schemas:
+        v1-translation-model:
+            title: v1-translation-model
+            type: object
+            properties:
+                english:
+                    minLength: 1
+                    type: string
+                spanish:
+                    minLength: 1
+                    type: string
+        v1-post-translation-request:
+            title: v1-post-translation-request
+            allOf:
+                - $ref: '#/components/schemas/v1-translation-model'
+                - required:
+                    - english
+                    - spanish
+        v1-translation-response:
+            title: v1-translation-response
+            allOf:
+                - $ref: '#/components/schemas/v1-translation-model'
+                - required:
+                    - english
+                    - spanish
+        v1-400-error-response:
+            title: v1-400-error-response
+            type: object
+            properties:
+                errors:
+                    type: array
+                    items:
+                       type: string
+                       minLength: 1
