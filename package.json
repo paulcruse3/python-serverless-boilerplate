@@ -13,6 +13,7 @@
         "start": "pipenv run serverless offline start --stage local --aws_envs local --profile $STAGE --region us-east-2",
         "deploy": "serverless deploy --stage $STAGE --aws_envs cloud --profile $STAGE --region us-east-2",
         "remove": "serverless remove --stage $STAGE --aws_envs cloud  --profile $STAGE --region us-east-2",
+        "test": "RUN_MODE=unittest python -m unittest discover",
         "print": "serverless print --stage $STAGE --aws_envs cloud --profile $STAGE --region us-east-2"
     },
     "devDependencies": {

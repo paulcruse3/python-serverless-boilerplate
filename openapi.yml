@@ -119,8 +119,8 @@ paths:
                                 $ref: '#/components/schemas/v1-400-error-response'
 components:
     schemas:
-        v1-translation-model:
-            title: v1-translation-model
+        v1-translation-request-model:
+            title: v1-translation-request-model
             type: object
             properties:
                 english:
@@ -129,20 +129,26 @@ components:
                 spanish:
                     minLength: 1
                     type: string
+        v1-translation-response-model:
+            title: v1-translation-response-model
+            type: object
+            properties:
+                translation:
+                    type: string
+                    nullable: true
         v1-post-translation-request:
             title: v1-post-translation-request
             allOf:
-                - $ref: '#/components/schemas/v1-translation-model'
+                - $ref: '#/components/schemas/v1-translation-request-model'
                 - required:
                     - english
                     - spanish
         v1-translation-response:
             title: v1-translation-response
             allOf:
-                - $ref: '#/components/schemas/v1-translation-model'
+                - $ref: '#/components/schemas/v1-translation-response-model'
                 - required:
-                    - english
-                    - spanish
+                    - translation
         v1-400-error-response:
             title: v1-400-error-response
             type: object
