@@ -1,5 +1,5 @@
-# zeconomy-translation
-A backend written assessment
+# translation code sample
+A backend code sample using AWS, Serverless, Python3 and Dynamodb
 
 ## Development
 
